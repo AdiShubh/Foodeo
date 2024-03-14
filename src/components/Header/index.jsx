@@ -47,7 +47,7 @@ const Header = () => {
           </div>
         </div>
         <div className=" md:w-[50%] w-full pt-8 ">
-          <img src="/public/headerImage.png" height={"200px"} />
+          <img src="/headerImage.png" height={"200px"} />
         </div>
       </div>
     </div>

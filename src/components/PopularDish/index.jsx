@@ -8,7 +8,7 @@ const PopularDishSection = () => {
     <div>
       <div className="flex  md:flex-row flex-col gap-2 justify-between  mx-auto w-full p-11 bg-green-50  ">
         <div className="md:w-[40%] w-full md:ml-14   ">
-          <img src="/public/popularDish.png" />
+          <img src="/popularDish.png" />
         </div>
         <div className=" md:w-[50%] w-full mt-16 ">
           <p className="text-5xl text-gray-900 font-semibold">
