@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import PopularDishSection from "../components/PopularDish";
 import Footer from "../components/Footer";
 import PopularChef from "../components/PopularChef";
+import ReviewsCarousel from "../components/ReviewsCarousal";
+import MenuSection from "../components/MenuSection";
 
 const HomePage = () => {
   return (
@@ -11,6 +13,8 @@ const HomePage = () => {
       <Header />
       <PopularDishSection />
       <PopularChef />
+      <MenuSection />
+      <ReviewsCarousel />
       <Footer />
     </div>
   );

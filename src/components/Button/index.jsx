@@ -17,7 +17,7 @@ const variants = {
 
     gray_900: "bg-gray-900 text-white-A700",
 
-    gray_200: "bg-gray-200 text-black-900",
+    gray_200: "bg-gray-200 text-gray-700",
 
     red: "bg-red-500 text-white",
   },
@@ -31,10 +31,10 @@ const sizes = {
   "3xl": "h-[60px] px-[15px] text-xl",
   "2xl": "h-[60px] px-[35px] text-[25px]",
   xl: "h-[54px] px-[35px] text-xl",
-  lg: "h-[50px] px-[13px]",
-  md: "h-[50px] px-[34px] text-sm",
-  sm: "h-[35px] px-3.5 text-sm",
-  xs: "h-[35px] px-[7px]",
+  lg: "h-[40px] px-[30px] text-xl text-center",
+  md: "h-[40px] px-[15px] text-md",
+  sm: "h-[35px] px-3.5 text-md",
+  xs: "h-[25px] px-[7px] text-sm",
 };
 
 const CustomButton = ({
@@ -51,7 +51,7 @@ const CustomButton = ({
 }) => {
   return (
     <button
-      className={`${className} flex items-center justify-center text-center cursor-pointer ${
+      className={`${className} flex items-center justify-center text-center hover:bg-gray-300 hover:text-orange-600 cursor-pointer ${
         (shape && shapes[shape]) || ""
       } ${(size && sizes[size]) || ""} ${
         (variant && variants[variant]?.[color]) || ""

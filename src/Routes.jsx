@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import OrderOnline from "./pages/OrderOnline";
 import Checkout from "./pages/Checkout";
 import HomePage from "./pages/HomePage";
+import Cart from "./pages/Cart";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -41,6 +42,10 @@ const ProjectRoutes = () => {
     {
       path: "homepage",
       element: <HomePage />,
+    },
+    {
+      path: "cart",
+      element: <Cart />,
     },
   ]);
 

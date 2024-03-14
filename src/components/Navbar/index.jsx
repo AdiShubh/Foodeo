@@ -1,34 +1,111 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomButton from "../Button";
 import { CiShoppingCart } from "react-icons/ci";
+import { FaBars } from "react-icons/fa6";
+import useCartStore from "../../Store/CartStore";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { cartItems } = useCartStore();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  //console.log(isOpen);
+  const handleNav = () => {
+    setIsOpen(!isOpen);
+    //console.log(isOpen);
+  };
+  const activeState = ({ isActive }) => {
+    return isActive ? "text-red-500" : "text-gray-700";
+  };
+
   return (
-    <div className="flex justify-between items-center  mx-28 my-8 ">
-      <div className="text-4xl">
-        Fo<span className="text-red-500">o</span>de
-        <span className="text-red-500">o</span>
+    <div className="flex justify-between md:gap-1 items-center  lg:mx-28   mx-5 my-8 ">
+      <div className=" md:hidden" onClick={handleNav}>
+        <FaBars size={20} />
       </div>
+      <Link to="/HomePage">
+        <div className="md:text-4xl text-3xl  ">
+          Fo<span className="text-red-500">o</span>de
+          <span className="text-red-500">o</span>
+        </div>
+      </Link>
+
       <div>
-        <ul className="flex gap-8 text-gray-600 text-lg">
-          <li>Home</li>
-          <li>Menu</li>
-          <li>About Us</li>
-          <li>Order Online</li>
-          <li>Reservation</li>
-          <li>Contact Us</li>
+        <ul
+          className={`${
+            isOpen
+              ? "flex flex-col gap-2 absolute top-[82px] left-0 bg-red-500/80 w-full text-white"
+              : "hidden"
+          } md:flex md:flex-row md:gap-2  lg:gap-8     md:text-gray-600 text-lg md:static absolute md:bg-transparent  items-center md:p-8 cursor-pointer`}
+          onClick={() => setIsOpen(false)}
+        >
+          <li className="hover:text-red-500">
+            <NavLink to="/HomePage" className={activeState}>
+              Home
+            </NavLink>
+          </li>
+
+          <li className="hover:text-red-500">
+            <NavLink to="/menu" className={activeState}>
+              Menu
+            </NavLink>
+          </li>
+
+          <li className="hover:text-red-500 whitespace-nowrap">
+            <NavLink to="/aboutus" className={activeState}>
+              About Us
+            </NavLink>
+          </li>
+          <li className="hover:text-red-500 whitespace-nowrap">
+            <NavLink to="/orderonline" className={activeState}>
+              Order Online
+            </NavLink>
+          </li>
+          <li className="hover:text-red-500">
+            <NavLink to="/reservation" className={activeState}>
+              Reservation
+            </NavLink>
+          </li>
+          <li className="hover:text-red-500 whitespace-nowrap">
+            <NavLink to="/contact" className={activeState}>
+              Contact Us
+            </NavLink>
+          </li>
         </ul>
       </div>
-      <div className="flex gap-8">
-        <CustomButton shape="circle" color="cart_button">
-          <CiShoppingCart size={30} />
+      <div className="flex gap-8 ">
+        <CustomButton
+          shape="circle"
+          color="cart_button"
+          md:size="xl"
+          size="md"
+          className="relative"
+          onClick={() => navigate("/cart")}
+        >
+          <CiShoppingCart md:size={30} size={25} />
+          <span className="absolute -top-1 -right-3 px-2.5 py-0.5 bg-yellow-500 rounded-full text-xs">
+            {cartItems.length}
+          </span>
         </CustomButton>
-        <CustomButton color="red" shape="round" size="xl">
+        <CustomButton
+          color="red"
+          shape="round"
+          md:size="xl"
+          size="lg"
+          className="whitespace-nowrap"
+          onClick={() =>
+            toast.info("Feature under development. Currently unavailable")
+          }
+        >
           Log in
         </CustomButton>
       </div>
     </div>
   );
+  // </div>className="md:gap-8 md:text-gray-600 text-lg  md:flex md:flex-row items-center p-8 hidden "
 };
 
 export default Navbar;

@@ -6,24 +6,26 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-900 p-10 px-14">
-      <div className="w-[80%] mx-auto ">
-        <div className="flex gap-8">
-          <div className="w-[32%] flex flex-col gap-[31px]">
-            <p className="text-xl text-red-500 font-semibold">FOODEO</p>
-            <p className="text-red-50">
+    <div className="bg-gray-900 p-10 md:x-14  bottom-0      w-full ">
+      <div className="md:w-[80%] w-full mx-auto ">
+        <div className="flex md:gap-8 gap-4">
+          <div className="md:w-[32%] w-[20%] flex flex-col gap-[31px]">
+            <p className="md:text-xl text-lg text-red-500 font-semibold">
+              FOODEO
+            </p>
+            <p className="text-red-50 md:text-[18px] text-xs">
               Viverra gravida morbi egestas facilisis tortor netus non duis
               tempor.
             </p>
-            <div className="flex gap-4 text-white text-3xl">
+            <div className="flex gap-4 text-white md:text-2xl text-xl">
               <FaFacebook />
               <FaInstagramSquare />
               <FaXTwitter />
             </div>
           </div>
           <div className="flex flex-col  w-[12%]  gap-[31px] ">
-            <p className="!text-red-500 text-xl">Page</p>
-            <div className="flex flex-col items-start justify-start w-full gap-[23px] text-red-50">
+            <p className="!text-red-500 md:text-xl text-lg">Page</p>
+            <div className="flex flex-col items-start justify-start w-full gap-[23px] text-red-50 md:text-[16px] text-xs">
               <p>Home</p>
               <p>Menu</p>
               <p>Order online</p>
@@ -32,16 +34,16 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col items-start justify-start w-[14%]  gap-[35px] ">
-            <p className="!text-red-500 text-xl">Information</p>
-            <div className="flex flex-col items-start justify-start gap-6 text-red-50">
+            <p className="!text-red-500  md:text-xl text-lg">Information</p>
+            <div className="md:text-[16px] text-xs flex flex-col items-start justify-start gap-6 text-red-50">
               <p>About us</p>
               <p>Testimonial</p>
               <p>Event</p>
             </div>
           </div>
-          <div className="flex flex-col items-start justify-start w-[26%]  gap-[31px] text-red-50 ">
-            <p className="!text-red-500 text-xl">Get in touch</p>
-            <div className="flex flex-col items-start justify-start w-full gap-[21px]">
+          <div className="flex flex-col items-start justify-start md:w-[26%] w-[35%] ml-8 gap-[31px] text-red-50 ">
+            <p className="!text-red-500 md:text-xl text-lg">Get in touch</p>
+            <div className="md:text-[16px] text-xs flex flex-col items-start justify-start w-full gap-[21px]">
               <p className="!leading-[153%] ">
                 2972 Westheimer Rd. Santa Ana, Illinois 85486
               </p>

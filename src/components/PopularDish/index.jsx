@@ -1,14 +1,16 @@
 import React from "react";
 import CustomButton from "../Button";
+import { useNavigate } from "react-router-dom";
 
 const PopularDishSection = () => {
+  const navigate = useNavigate();
   return (
     <div>
-      <div className="flex gap-2 justify-between  mx-auto w-full p-11 bg-green-50  ">
-        <div className="w-[40%] ml-14   ">
+      <div className="flex  md:flex-row flex-col gap-2 justify-between  mx-auto w-full p-11 bg-green-50  ">
+        <div className="md:w-[40%] w-full md:ml-14   ">
           <img src="/public/popularDish.png" />
         </div>
-        <div className=" w-[50%] mt-16 ">
+        <div className=" md:w-[50%] w-full mt-16 ">
           <p className="text-5xl text-gray-900 font-semibold">
             Our Most Popular
           </p>
@@ -19,7 +21,14 @@ const PopularDishSection = () => {
             and is also a good source of fiber.
           </p>
           <div className="flex gap-4">
-            <CustomButton color="red" shape="round" size="4xl">
+            <CustomButton
+              color="red"
+              shape="round"
+              size="4xl"
+              onClick={() => {
+                navigate("/menu");
+              }}
+            >
               Order Now
             </CustomButton>
           </div>
