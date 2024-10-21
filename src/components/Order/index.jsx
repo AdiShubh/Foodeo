@@ -7,7 +7,7 @@ const OrderSection = () => {
   const [dishData, setDishData] = useState([]);
 
   async function getData() {
-    const response = await axios.get("https://foodeoserver02.onrender.com");
+    const response = await axios.get("http://localhost:9000/");
     setDishData(response.data);
     //console.log(dishData);
   }

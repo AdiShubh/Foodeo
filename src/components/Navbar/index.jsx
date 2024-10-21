@@ -5,6 +5,14 @@ import { FaBars } from "react-icons/fa6";
 import useCartStore from "../../Store/CartStore";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+  SignIn,
+} from "@clerk/clerk-react";
+import { element } from "prop-types";
 
 const Navbar = () => {
   const { cartItems } = useCartStore();
@@ -18,7 +26,13 @@ const Navbar = () => {
     //console.log(isOpen);
   };
   const activeState = ({ isActive }) => {
-    return isActive ? "text-red-500" : "text-gray-700";
+    return isActive
+      ? isOpen
+        ? "text-red-600 font-bold bg-white p-2 rounded-md"
+        : "text-red-500"
+      : isOpen
+      ? "text-white"
+      : "text-gray-600";
   };
 
   return (
@@ -27,9 +41,12 @@ const Navbar = () => {
         <FaBars size={20} />
       </div>
       <Link to="/HomePage">
-        <div className="md:text-4xl text-3xl  ">
-          Fo<span className="text-red-500">o</span>de
-          <span className="text-red-500">o</span>
+        <div className="flex gap-2">
+          <img src="/logo.png" className="w-[50px] h-[50px] rounded-full" />
+          <div className="md:text-4xl text-3xl  ">
+            Fo<span className="text-red-500">o</span>de
+            <span className="text-red-500">o</span>
+          </div>
         </div>
       </Link>
 
@@ -90,7 +107,7 @@ const Navbar = () => {
             {cartItems.length}
           </span>
         </CustomButton>
-        <CustomButton
+        {/* <CustomButton
           color="red"
           shape="round"
           md:size="xl"
@@ -101,7 +118,31 @@ const Navbar = () => {
           }
         >
           Log in
-        </CustomButton>
+        </CustomButton> */}
+        <SignedOut>
+          <SignInButton mode="modal">
+            <CustomButton
+              color="red"
+              shape="round"
+              md:size="xl"
+              size="lg"
+              className="whitespace-nowrap"
+            >
+              Log in
+            </CustomButton>
+          </SignInButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonBox: "border border-red-600 rounded-full",
+                avatarBox: "border border-blue-600  rounded-full ",
+                avatarImage: "rounded-full   object-cover ",
+              },
+            }}
+          />
+        </SignedIn>
       </div>
     </div>
   );

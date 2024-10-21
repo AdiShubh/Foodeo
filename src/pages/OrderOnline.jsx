@@ -7,9 +7,7 @@ import OrderSection from "../components/Order";
 const OrderOnline = () => {
   return (
     <div>
-      <Navbar />
       <OrderSection />
-      <Footer />
     </div>
   );
 };

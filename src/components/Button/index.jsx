@@ -51,7 +51,7 @@ const CustomButton = ({
 }) => {
   return (
     <button
-      className={`${className} flex items-center justify-center text-center hover:bg-gray-300 hover:text-orange-600 cursor-pointer ${
+      className={`${className} flex items-center justify-center text-center hover:bg-gray-500 hover:text-white      cursor-pointer ${
         (shape && shapes[shape]) || ""
       } ${(size && sizes[size]) || ""} ${
         (variant && variants[variant]?.[color]) || ""

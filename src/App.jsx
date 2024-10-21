@@ -1,17 +1,18 @@
 import "./App.css";
 import Routes from "./Routes";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import { HashRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
-      <Router>
-        <ToastContainer />
-        <Routes />
-      </Router>
+      <ToastContainer />
+      <Navbar />
+      <Routes />
+      <Footer />
     </>
   );
 }

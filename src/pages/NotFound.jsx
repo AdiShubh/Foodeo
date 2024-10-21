@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 const NotFound = () => {
   return (
     <>
-      <Navbar />
       <div>
         <div className="h-screen flex justify-center bg-gray-200">
           <div>
@@ -20,7 +19,6 @@ const NotFound = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

@@ -3,6 +3,7 @@ import CustomButton from "../Button";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -26,17 +27,30 @@ const Footer = () => {
           <div className="flex flex-col  w-[12%]  gap-[31px] ">
             <p className="!text-red-500 md:text-xl text-lg">Page</p>
             <div className="flex flex-col items-start justify-start w-full gap-[23px] text-red-50 md:text-[16px] text-xs">
-              <p>Home</p>
-              <p>Menu</p>
-              <p>Order online</p>
-              <p>Catering</p>
-              <p>Reservation</p>
+              <Link to={"/HomePage"}>
+                <p>Home</p>
+              </Link>
+              <Link to={"/menu"}>
+                <p>Menu</p>
+              </Link>
+              <Link to={"/orderonline"}>
+                <p>Order online</p>
+              </Link>
+              {/* <Link to={"/homePage"}>
+                <p>Catering</p>
+              </Link> */}
+              <Link to={"/reservation"}>
+                <p>Reservation</p>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col items-start justify-start w-[14%]  gap-[35px] ">
             <p className="!text-red-500  md:text-xl text-lg">Information</p>
             <div className="md:text-[16px] text-xs flex flex-col items-start justify-start gap-6 text-red-50">
-              <p>About us</p>
+              <Link to={"/aboutus"}>
+                {" "}
+                <p>About us</p>
+              </Link>
               <p>Testimonial</p>
               <p>Event</p>
             </div>

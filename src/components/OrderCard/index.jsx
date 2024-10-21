@@ -3,11 +3,13 @@ import CustomButton from "../Button";
 import StepperInput from "../InputStepper";
 import useCartStore from "../../Store/CartStore";
 import { toast } from "react-toastify";
+import StarRatings from "../Ratings";
 
 const OrderCard = ({ item }) => {
   const { cartItems, addItemToCart, increaseQuantity, decreaseQuantity } =
     useCartStore();
   const itemId = item.id;
+  console.log(item);
 
   const AddToCart = () => {
     addItemToCart(item);
@@ -23,7 +25,7 @@ const OrderCard = ({ item }) => {
   };
   //console.log(cartItems);
 
-  //console.log(item);
+  console.log(item);
   return (
     <div className="flex flex-col gap w-[320px] p-[25px] max-w-[1112px] bg-slate-100 rounded-2xl">
       <div>
@@ -36,10 +38,12 @@ const OrderCard = ({ item }) => {
       <div className="text-center text-2xl my-2 font-semibold">
         <p>{item.name}</p>
       </div>
+      <div>
+        <StarRatings rating={item.ratings} />
+      </div>
       <div className="text-center text-gray-800 text-sm">
         <p>{item.text}</p>
       </div>
-      {/* <div className="text-xl">{item.ratings}</div> */}
 
       <p className="text-center text-2xl my-4">$ {item.price}</p>
 

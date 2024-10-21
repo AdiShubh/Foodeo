@@ -7,7 +7,6 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div className=" p-2 bg-gradient-to-br from-[#f9dddc] to-[#fafafa]">
-      <Navbar />
       <div className=" flex md:flex-row flex-col  gap-2 justify-between  mx-auto w-[80%]  ">
         <div className=" md:w-[50%] w-full mt-16 ">
           <p className="text-7xl   text-gray-900 md:font-semibold w-full mr-1">

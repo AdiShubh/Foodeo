@@ -15,6 +15,7 @@ const ProjectRoutes = () => {
   let element = useRoutes([
     { path: "/", element: <HomePage /> },
     { path: "*", element: <NotFound /> },
+
     {
       path: "menu",
       element: <Menu />,

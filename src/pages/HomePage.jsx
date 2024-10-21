@@ -15,7 +15,6 @@ const HomePage = () => {
       <PopularChef />
       <MenuSection />
       <ReviewsCarousel />
-      <Footer />
     </div>
   );
 };

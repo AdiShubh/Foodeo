@@ -26,9 +26,7 @@ const Cart = () => {
 
   return (
     <div>
-      <Navbar />
       <CartItemCard item={cartItems} />
-      <Footer />
     </div>
   );
 };
