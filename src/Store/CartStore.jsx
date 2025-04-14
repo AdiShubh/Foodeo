@@ -5,6 +5,13 @@ const useCartStore = create(
     (set, get) => ({
       cartItems: [],
 
+      getTotalQuantity: () => {
+        return get().cartItems.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+      },
+
       addItemToCart: (item) => {
         const itemExists = get().cartItems.find(
           (cartItem) => cartItem.id === item.id
@@ -54,6 +61,12 @@ const useCartStore = create(
             }
           }
         }
+      },
+      removeFromCart: (itemId) => {
+        const updatedCartItems = get().cartItems.filter(
+          (item) => item.id !== itemId
+        );
+        set({ cartItems: updatedCartItems });
       },
     }),
     {

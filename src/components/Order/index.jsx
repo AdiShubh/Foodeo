@@ -9,7 +9,6 @@ const OrderSection = () => {
   async function getData() {
     const response = await axios.get("http://localhost:9000/");
     setDishData(response.data);
-    //console.log(dishData);
   }
 
   useEffect(() => {

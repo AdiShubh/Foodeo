@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const StarRatings = ({ rating }) => {
-  console.log(rating);
+  //console.log(rating);
   // Calculate the full, half, and empty stars based on the rating
   const fullStars = Math.floor(rating); // Number of full stars
   const hasHalfStar = rating % 1 !== 0; // Check if there's a half star

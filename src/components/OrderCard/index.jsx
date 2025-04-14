@@ -6,26 +6,41 @@ import { toast } from "react-toastify";
 import StarRatings from "../Ratings";
 
 const OrderCard = ({ item }) => {
-  const { cartItems, addItemToCart, increaseQuantity, decreaseQuantity } =
-    useCartStore();
+  const {
+    cartItems,
+    addItemToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    getTotalQuantity,
+  } = useCartStore();
   const itemId = item.id;
-  console.log(item);
+
+  const itemsInCart = getTotalQuantity();
 
   const AddToCart = () => {
+    // Find the specific item in the cart by its ID (assuming items have unique IDs)
+    const existingCartItem = cartItems.find(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    // Check if the cart already contains 3 unique items
+    if (cartItems.length >= 3 && !existingCartItem) {
+      toast.error("You can add a maximum of 3 unique items to the cart.");
+      return;
+    }
+
+    // Check if the quantity of the current item exceeds 5
+    if (existingCartItem && existingCartItem.quantity >= 5) {
+      toast.error("You can add a maximum of 5 units of this item.");
+      return;
+    }
+
+    // Add the item to the cart (this could include increasing its quantity)
     addItemToCart(item);
 
-    toast.success("Item Added to cart. Check Cart for checkout.");
-  };
-  const onIncreaseQuantity = (itemId) => {
-    increaseQuantity(itemId);
+    toast.success("Item added to cart. Check Cart for checkout.");
   };
 
-  const onDecreaseQuantity = (itemId) => {
-    decreaseQuantity(itemId);
-  };
-  //console.log(cartItems);
-
-  console.log(item);
   return (
     <div className="flex flex-col gap w-[320px] p-[25px] max-w-[1112px] bg-slate-100 rounded-2xl">
       <div>

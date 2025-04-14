@@ -45,8 +45,8 @@ const Header = () => {
             </CustomButton>
           </div>
         </div>
-        <div className=" md:w-[50%] w-full pt-8 ">
-          <img src="/headerImage.png" height={"200px"} />
+        <div className=" md:w-[50%] w-full p-12 animate-spin-slow ">
+          <img src="/headerImage02.png" height={"200px"} />
         </div>
       </div>
     </div>

@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const MenuCard = ({ item }) => {
   const navigate = useNavigate();
-  //console.log(item);
+
   return (
-    <div className="flex flex-col gap w-[350px] p-[25px] max-w-[1112px] bg-slate-100 rounded-2xl">
+    <div className="flex flex-col gap w-[350px] p-[25px] max-w-[1112px] bg-slate-100 hover:shadow-xl hover:shadow-gray-400 rounded-2xl">
       <div>
         <img
           src={item.image}

@@ -3,13 +3,22 @@ import CustomButton from "../Button";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import useCartStore from "../../Store/CartStore";
+import { toast } from "react-toastify";
 
 const StepperInput = ({ item }) => {
-  const { increaseQuantity, decreaseQuantity } = useCartStore();
+  const { cartItems, increaseQuantity, decreaseQuantity } = useCartStore();
   const itemId = item.id;
 
   const onIncreaseQuantity = (itemId) => {
-    increaseQuantity(itemId);
+    const item = cartItems.find((cartItem) => cartItem.id === itemId);
+
+    if (item && item.quantity >= 5) {
+      // Display toast error if quantity exceeds 5
+      toast.error("You can add a maximum of 5 units for this item.");
+    } else {
+      // Otherwise, call the increaseQuantity function
+      increaseQuantity(itemId);
+    }
   };
 
   const onDecreaseQuantity = (itemId) => {

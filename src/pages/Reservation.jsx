@@ -65,16 +65,18 @@ const ReservationForm = () => {
   const Persons = partSize(10);
 
   return (
-    <div className="container mx-auto my-12 p-8  flex flex-col  md:flex-row gap-4  ">
-      <div className="md:w-1/2 flex items-center p-2 justify-center  ">
+    <div className="w-11/12 mx-auto my-12 p-10  flex flex-col  md:flex-row gap-4  ">
+      <div className="md:w-1/2 flex items-center p-6 justify-center  ">
         <img
           src="img007.png"
           alt="Restaurant Image"
           className="w-full h-full object-cover rounded-lg"
         />
       </div>
-      <div className="md:w-1/2       ">
-        <h2 className="text-6xl font-bold mb-4 text-center">Book a Table</h2>
+      <div className="md:w-1/2 p-4      ">
+        <h2 className="text-6xl font-semibold mb-4 text-center">
+          Book a Table
+        </h2>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <div className=" mx-auto w-11/12   my-10  ">
             <div className=" w-full  mx-auto   mb-8 ">
@@ -168,3 +170,5 @@ const ReservationForm = () => {
 };
 
 export default ReservationForm;
+
+

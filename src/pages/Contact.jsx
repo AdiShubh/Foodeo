@@ -13,14 +13,14 @@ const ContactUsSchema = Yup.object().shape({
 const Contact = () => {
   return (
     <>
-      <p className="text-7xl font-semibold text-center my-8">Contact Us</p>
+      <p className="text-6xl  text-center my-8">Contact Us</p>
       <p className="text-3xl text-center text-gray-600">
         We love hearing from our customers. Feel free to share your experience
         <br />
         or ask any questions you may have.
       </p>
-      <div className="container mx-auto my-14 px-4 ">
-        <div className="flex flex-col md:flex-row md:space-x-4 ">
+      <div className="w-5/6 mx-auto my-14 px-4 ">
+        <div className="flex flex-col md:flex-row md:space-x-8 ">
           {/* Google Map Section */}
           <div className="w-full md:w-1/2 rounded-xl overflow-hidden border border-gray-500">
             <iframe

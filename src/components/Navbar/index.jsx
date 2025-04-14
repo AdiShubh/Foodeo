@@ -5,14 +5,7 @@ import { FaBars } from "react-icons/fa6";
 import useCartStore from "../../Store/CartStore";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import {
-  SignedIn,
-  SignedOut,
-  UserButton,
-  SignInButton,
-  SignIn,
-} from "@clerk/clerk-react";
-import { element } from "prop-types";
+
 
 const Navbar = () => {
   const { cartItems } = useCartStore();
@@ -56,7 +49,7 @@ const Navbar = () => {
             isOpen
               ? "flex flex-col gap-2 absolute top-[82px] left-0 bg-red-500/80 w-full text-white"
               : "hidden"
-          } md:flex md:flex-row md:gap-2  lg:gap-8     md:text-gray-600 text-lg md:static absolute md:bg-transparent  items-center md:p-8 cursor-pointer`}
+          } md:flex md:flex-row md:gap-2  lg:gap-8     md:text-gray-600 text-xl md:static absolute md:bg-transparent  items-center md:p-8 cursor-pointer`}
           onClick={() => setIsOpen(false)}
         >
           <li className="hover:text-red-500">
@@ -107,7 +100,7 @@ const Navbar = () => {
             {cartItems.length}
           </span>
         </CustomButton>
-        {/* <CustomButton
+         <CustomButton
           color="red"
           shape="round"
           md:size="xl"
@@ -118,31 +111,8 @@ const Navbar = () => {
           }
         >
           Log in
-        </CustomButton> */}
-        <SignedOut>
-          <SignInButton mode="modal">
-            <CustomButton
-              color="red"
-              shape="round"
-              md:size="xl"
-              size="lg"
-              className="whitespace-nowrap"
-            >
-              Log in
-            </CustomButton>
-          </SignInButton>
-        </SignedOut>
-        <SignedIn>
-          <UserButton
-            appearance={{
-              elements: {
-                userButtonBox: "border border-red-600 rounded-full",
-                avatarBox: "border border-blue-600  rounded-full ",
-                avatarImage: "rounded-full   object-cover ",
-              },
-            }}
-          />
-        </SignedIn>
+        </CustomButton> 
+        
       </div>
     </div>
   );
