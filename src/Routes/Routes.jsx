@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import MainLayout from "../Layout/layout";
+import MainLayout from "../layout/layout";
 
 import HomePage from "../pages/HomePage";
 import NotFound from "../pages/NotFound";
@@ -12,7 +12,7 @@ import OrderOnline from "../pages/OrderOnline";
 import Checkout from "../pages/Checkout";
 import Cart from "../pages/Cart";
 import SignIn from "../pages/SignIn";
-import SignUpUser from "../pages/SignUp";
+import SignUp from "../pages/SignUp";
 
 const AppRoutes = () => {
   const element = useRoutes([
@@ -30,7 +30,7 @@ const AppRoutes = () => {
         { path: "checkout", element: <Checkout /> },
         { path: "cart", element: <Cart /> },
         { path: "sign-in", element: <SignIn /> },
-        { path: "sign-up", element: <SignUpUser /> },
+        { path: "sign-up", element: <SignUp /> },
       ],
     },
 

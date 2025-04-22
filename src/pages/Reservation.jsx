@@ -130,27 +130,27 @@ const ReservationForm = () => {
                   </option>
                 ))}
               </select>
-              {errors.time && (
-                <p className="text-red-500">{errors.partSize.message}</p>
+              {errors.partySize && (
+                <p className="text-red-500">{errors.partySize.message}</p>
               )}
             </div>
             <div className="mb-4">
               <p className="text-gray-700  text-2xl mb-4  ">
                 Selected Date:
                 <span className="text-green-700 font-semibold ml-4">
-                  {selectedDate?.toLocaleDateString()}
+                  {selectedDate ? new Date(selectedDate).toLocaleDateString() : "Pick a date above"}
                 </span>
               </p>
               <p className="text-gray-700 text-2xl mb-4 ">
                 Selected Time:
                 <span className="text-green-700 font-semibold ml-4">
-                  {selectedTime}
+                  {selectedTime ? selectedTime : "Pick a time above"}
                 </span>
               </p>
               <p className="text-gray-700 text-2xl ">
                 Selected Persons:
                 <span className="text-green-700 font-semibold ml-4">
-                  {selectedPersons}
+                  {selectedPersons ? selectedPersons : "Pick a party size above"}
                 </span>
               </p>
             </div>

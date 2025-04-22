@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
 const useCartStore = create(
   persist(
     (set, get) => ({
@@ -13,64 +14,69 @@ const useCartStore = create(
       },
 
       addItemToCart: (item) => {
-        const itemExists = get().cartItems.find(
-          (cartItem) => cartItem.id === item.id
+        const existingItem = get().cartItems.find(
+          (cartItem) => cartItem._id === item._id
         );
 
-        if (itemExists) {
-          if (typeof itemExists.quantity === "number") {
-            itemExists.quantity++;
-          }
-
-          set({ cartItems: [...get().cartItems] });
+        if (existingItem) {
+          set({
+            cartItems: get().cartItems.map((cartItem) =>
+              cartItem._id === item._id
+                ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                : cartItem
+            ),
+          });
         } else {
-          set({ cartItems: [...get().cartItems, { ...item, quantity: 1 }] });
+          set({
+            cartItems: [...get().cartItems, { ...item, quantity: 1 }],
+          });
         }
       },
 
       increaseQuantity: (itemId) => {
-        const itemExists = get().cartItems.find(
-          (cartItem) => cartItem.id === itemId
-        );
-
-        if (itemExists) {
-          if (typeof itemExists.quantity === "number") {
-            itemExists.quantity++;
-          }
-
-          set({ cartItems: [...get().cartItems] });
-        }
+        set({
+          cartItems: get().cartItems.map((item) =>
+            item._id === itemId
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        });
       },
+
       decreaseQuantity: (itemId) => {
-        const itemExists = get().cartItems.find(
-          (cartItem) => cartItem.id === itemId
+        const currentItem = get().cartItems.find(
+          (item) => item._id === itemId
         );
 
-        if (itemExists) {
-          if (typeof itemExists.quantity === "number") {
-            if (itemExists.quantity === 1) {
-              const updatedCartItems = get().cartItems.filter(
-                (item) => item.id !== itemId
-              );
+        if (!currentItem) return;
 
-              set({ cartItems: updatedCartItems });
-            } else if (itemExists.quantity > 1) {
-              itemExists.quantity--;
-
-              set({ cartItems: [...get().cartItems] });
-            }
-          }
+        if (currentItem.quantity === 1) {
+          set({
+            cartItems: get().cartItems.filter(
+              (item) => item._id !== itemId
+            ),
+          });
+        } else {
+          set({
+            cartItems: get().cartItems.map((item) =>
+              item._id === itemId
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ),
+          });
         }
       },
+
       removeFromCart: (itemId) => {
-        const updatedCartItems = get().cartItems.filter(
-          (item) => item.id !== itemId
-        );
-        set({ cartItems: updatedCartItems });
+        set({
+          cartItems: get().cartItems.filter(
+            (item) => item._id !== itemId
+          ),
+        });
       },
     }),
     {
-      name: "cart-items",
+      name: "cart-items", // key for localStorage
     }
   )
 );

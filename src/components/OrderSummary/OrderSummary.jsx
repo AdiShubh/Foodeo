@@ -1,17 +1,36 @@
 import React from "react";
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import useCartStore from "../../Store/CartStore";
+import useCartStore from "../../store/CartStore";
 import StepperInput from "../InputStepper";
+import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
   const {
     cartItems,
-    addItemToCart,
+  
     removeFromCart,
-    increaseQuantity,
-    decreaseQuantity,
+   
   } = useCartStore();
+
+  const navigate = useNavigate();
+
+  // Calculate subtotal
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  
+
+  // Tax (10% of subtotal)
+  const tax = subtotal * 0.1;
+
+  // Shipping (can be fixed or dynamic)
+  const shipping = 5.99; // Example fixed shipping cost
+
+  // Total
+  const total = subtotal + tax + shipping;
 
   return (
     <>
@@ -34,7 +53,7 @@ const OrderSummary = () => {
                 <div className="flex items-center space-x-4">
                   <StepperInput item={item} />
                   <button
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item._id)}
                     className="p-2 text-red-500 hover:bg-red-100 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500"
                     aria-label="Remove item"
                   >
@@ -49,23 +68,25 @@ const OrderSummary = () => {
         <div className="mt-8 space-y-4">
           <div className="flex justify-between">
             <span>Subtotal:</span>
-            <span></span>
+            <span>${subtotal.toFixed(2)}</span>
           </div>
           <div className="flex justify-between">
             <span>Tax (10%):</span>
-            <span></span>
+            <span>${tax.toFixed(2)}</span>
           </div>
           <div className="flex justify-between">
             <span>Shipping:</span>
-            <span></span>
+            <span>${shipping.toFixed(2)}</span>
           </div>
           <div className="flex justify-between font-bold text-lg">
             <span>Total:</span>
-            <span></span>
+            <span>${total.toFixed(2)}</span>
           </div>
         </div>
-        <button className="mt-8 w-full bg-cyan-300 text-gray-800 font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500">
-          Continue Shopping
+        <button 
+         onClick={() => navigate('/orderonline')}
+        className="mt-8 w-full bg-cyan-300 text-gray-800 font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500">
+          Continue Adding Items
         </button>
       </div>
     </>

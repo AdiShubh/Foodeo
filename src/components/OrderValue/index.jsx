@@ -1,5 +1,5 @@
 import React from "react";
-import useCartStore from "../../Store/CartStore";
+import useCartStore from "../../store/CartStore";
 import CustomButton from "../Button";
 import { toast } from "react-toastify";
 import { getTotal } from "../../Utils/utils";
@@ -30,24 +30,7 @@ const OrderValue = () => {
           Checkout
         </CustomButton>
       </div>
-      {/* <div className=" pb-10 px-8 mt-24 py-3 shadow-sm rounded-lg bg-white">
-        <h3 className="font-bold text-center text-2xl mb-5 py-2 ">
-          Order Value
-        </h3>
-
-        <h3 className="text-xl text-center  ">
-          Total Quantity: <span className="font-bold"> {quantity}</span>
-        </h3>
-        <h3 className="text-xl text-center mt-5  ">
-          Total Price: <span className="font-bold">$ {price}</span>
-        </h3>
-
-        <div className="flex justify-center mt-7">
-          <CustomButton color="red" shape="round" size="lg">
-            Checkout
-          </CustomButton>
-        </div>
-      </div> */}
+     
     </div>
   );
 };

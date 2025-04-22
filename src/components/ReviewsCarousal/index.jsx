@@ -1,5 +1,5 @@
 import React from "react";
-import { Reviews } from "../../Data/Contants";
+import { Reviews } from "../../Data/ChefData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";

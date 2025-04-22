@@ -1,6 +1,6 @@
 import React from "react";
 import CustomButton from "../Button";
-import { chefs } from "./../../Data/Contants.jsx";
+import { chefs } from "../../Data/ChefData.jsx";
 import { toast } from "react-toastify";
 
 const PopularChef = () => {

@@ -3,7 +3,7 @@ import StepperInput from "../InputStepper";
 import CustomButton from "../Button";
 import OrderValue from "../OrderValue";
 
-const CartItemCard = ({ item }) => {
+const CartItemCard = ({ items }) => {
   return (
     <div className="flex my-auto justify-center gap-2 bg-gray-200 ">
       <div>
@@ -36,8 +36,8 @@ const CartItemCard = ({ item }) => {
           </thead>
 
           <tbody className="divide-y divide-gray-200">
-            {item.map((item) => (
-              <tr>
+            {items.map((item , index) => (
+              <tr key={index}>
                 <td className="px-6 py-4">
                   <div className="flex flex-col items-center space-x-3">
                     <div className="inline-flex w-10 h-10">
@@ -47,9 +47,7 @@ const CartItemCard = ({ item }) => {
                         src={item.image}
                       />
                     </div>
-                    {/* <div>
-                      <p> {item.name}</p>
-                    </div> */}
+                   
                   </div>
                 </td>
                 <td className="px-6 py-4 text-center">{item.name}</td>
@@ -59,9 +57,7 @@ const CartItemCard = ({ item }) => {
                 <td className="px-6 py-4 text-center">
                   <StepperInput item={item} />
                 </td>
-                {/* <td className="px-6 py-4 text-center text-gray-500">
-                  {item.quantity}
-                </td> */}
+               
                 <td className="px-6 py-4 text-center">
                   $ {item.price * item.quantity}
                 </td>
@@ -69,11 +65,7 @@ const CartItemCard = ({ item }) => {
             ))}
           </tbody>
 
-          {/* <tfoot>
-            <tr>
-              <td className="col-span-5 bg-green-300"></td>
-            </tr>
-          </tfoot> */}
+         
         </table>
         <div className=" h-fit mb-4">
           <OrderValue />

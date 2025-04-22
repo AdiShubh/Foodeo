@@ -2,15 +2,15 @@ import React from "react";
 import CustomButton from "../Button";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
-import useCartStore from "../../Store/CartStore";
+import useCartStore from "../../store/CartStore";
 import { toast } from "react-toastify";
 
 const StepperInput = ({ item }) => {
   const { cartItems, increaseQuantity, decreaseQuantity } = useCartStore();
-  const itemId = item.id;
+  const itemId = item._id;
 
   const onIncreaseQuantity = (itemId) => {
-    const item = cartItems.find((cartItem) => cartItem.id === itemId);
+    const item = cartItems.find((cartItem) => cartItem._id === itemId);
 
     if (item && item.quantity >= 5) {
       // Display toast error if quantity exceeds 5

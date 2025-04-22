@@ -1,11 +1,28 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
-export const useAuthStore = create((set) => ({
-  user: null,
-  isSignedIn: false,
-  isLoaded: false,
-  setAuth: (user, isSignedIn, isLoaded) =>
-    set({ user, isSignedIn, isLoaded }),
-  resetAuth: () =>
-    set({ user: null, isSignedIn: false, isLoaded: false }),
-}));
+const useAuthStore = create(
+  persist(
+    (set) => ({
+      user: null,
+      token: null,
+      isAuthenticated: false,
+      login: (user, token) => {
+        set({ user, token, isAuthenticated: true });
+      },
+      logout: () => {
+        set({ user: null, token: null, isAuthenticated: false });
+      },
+    }),
+    {
+      name: 'foodeoAuth', // key in localStorage
+      partialize: (state) => ({
+        user: state.user,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
+      }),
+    }
+  )
+);
+
+export default useAuthStore;

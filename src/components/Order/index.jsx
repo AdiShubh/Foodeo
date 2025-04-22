@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import MenuCard from "../MenuCard";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import OrderCard from "../OrderCard";
+import useDishes from "../../hooks/useDishes"; // Importing the useDishes hook
+
 const OrderSection = () => {
-  const [dishData, setDishData] = useState([]);
-
-  async function getData() {
-    const response = await axios.get("http://localhost:9000/");
-    setDishData(response.data);
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
+  // Use the custom hook to fetch dishes and handle filtering
+  const { dishes, loading, error } = useDishes();
 
   return (
     <div className="bg-gray-200">
@@ -29,7 +21,7 @@ const OrderSection = () => {
           selectedTabPanelClassName="relative tab-panel--selected"
         >
           <TabList className="flex flex-wrap md:flex-row md:justify-around w-[100%] md:mx-auto gap-[16px] p-[19px] md:mb-6 md:gap-2  ">
-            <Tab className="whitespace-nowrap md:ml-8   text-gray-900 text-xl font-normal bg-gray-300 md:px-8 px-3 py-2 rounded-md">
+            <Tab className="whitespace-nowrap md:ml-8 text-gray-900 text-xl font-normal bg-gray-300 md:px-8 px-3 py-2 rounded-md">
               All Category
             </Tab>
             <Tab className="text-gray-900 text-xl font-normal bg-gray-300 md:px-10 px-3 py-2 rounded-md">
@@ -45,43 +37,79 @@ const OrderSection = () => {
               Drink
             </Tab>
           </TabList>
-          {/* <div className="flex flex-row items-center justify-center w-full p-8 "> */}
 
-          <TabPanel className="flex gap-[30px]  justify-center flex-wrap  ">
-            {dishData.map((item, index) => {
-              return <OrderCard key={index} item={item} />;
-            })}
-          </TabPanel>
-          <TabPanel className="flex gap-[30px] justify-center flex-wrap ">
-            {dishData
-              .filter((item) => item.type === "dinner")
-              .map((item, index) => {
+          {/* All Categories Tab */}
+          <TabPanel className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-center">
+            {loading ? (
+              <div>Loading...</div>
+            ) : error ? (
+              <div>{error}</div>
+            ) : (
+              dishes.map((item, index) => {
                 return <OrderCard key={index} item={item} />;
-              })}
-          </TabPanel>
-          <TabPanel className="flex gap-[30px] justify-center flex-wrap ">
-            {dishData
-              .filter((item) => item.type === "lunch")
-              .map((item, index) => {
-                return <OrderCard key={index} item={item} />;
-              })}
-          </TabPanel>
-          <TabPanel className="flex gap-[30px] justify-center flex-wrap ">
-            {dishData
-              .filter((item) => item.type === "dessert")
-              .map((item, index) => {
-                return <OrderCard key={index} item={item} />;
-              })}
-          </TabPanel>
-          <TabPanel className="flex gap-[30px] justify-center flex-wrap ">
-            {dishData
-              .filter((item) => item.type === "drinks")
-              .map((item, index) => {
-                return <OrderCard key={index} item={item} />;
-              })}
+              })
+            )}
           </TabPanel>
 
-          {/* </div> */}
+          {/* Dinner Tab */}
+          <TabPanel className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-center">
+            {loading ? (
+              <div>Loading...</div>
+            ) : error ? (
+              <div>{error}</div>
+            ) : (
+              dishes
+                .filter((item) => item.type === "dinner")
+                .map((item, index) => {
+                  return <OrderCard key={index} item={item} />;
+                })
+            )}
+          </TabPanel>
+
+          {/* Lunch Tab */}
+          <TabPanel className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-center">
+            {loading ? (
+              <div>Loading...</div>
+            ) : error ? (
+              <div>{error}</div>
+            ) : (
+              dishes
+                .filter((item) => item.type === "lunch")
+                .map((item, index) => {
+                  return <OrderCard key={index} item={item} />;
+                })
+            )}
+          </TabPanel>
+
+          {/* Dessert Tab */}
+          <TabPanel className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-center">
+            {loading ? (
+              <div>Loading...</div>
+            ) : error ? (
+              <div>{error}</div>
+            ) : (
+              dishes
+                .filter((item) => item.type === "dessert")
+                .map((item, index) => {
+                  return <OrderCard key={index} item={item} />;
+                })
+            )}
+          </TabPanel>
+
+          {/* Drinks Tab */}
+          <TabPanel className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-center">
+            {loading ? (
+              <div>Loading...</div>
+            ) : error ? (
+              <div>{error}</div>
+            ) : (
+              dishes
+                .filter((item) => item.type === "drinks")
+                .map((item, index) => {
+                  return <OrderCard key={index} item={item} />;
+                })
+            )}
+          </TabPanel>
         </Tabs>
       </div>
     </div>
